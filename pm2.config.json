@@ -1,0 +1,12 @@
+{
+    "apps" : [
+        {
+            "name": "koi_sample_api_test",
+            "script": "npm",
+	    args: "run pro",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}
