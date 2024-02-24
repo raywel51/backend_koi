@@ -1,0 +1,16 @@
+[
+    {
+      "username": "admin",
+      "password": "admin123",
+      "name": "sawaddee",
+      "lastname": "krubbb",
+      "email": "sawaddee@gmail.com"
+    },
+    {
+      "username": "adminbuu",
+      "password": "adminbuu123",
+      "name": "adminbuu",
+      "lastname": "weblogin",
+      "email": "adminbuu@gmail.com"
+    }
+]

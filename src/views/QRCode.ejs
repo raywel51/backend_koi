@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Display</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7; /* Or any other background color you prefer */
+            font-size: 32px;
+        }
+        .content {
+            text-align: center; /* Centers text */
+        }
+        img {
+            display: block; /* Allows margin to be applied */
+            max-height: 90vh; /* Sets the maximum height of the image to 90% of the viewport height */
+            width: 600px; /* Maintains aspect ratio */
+            height: 600px; /* Maintains aspect ratio */
+        }
+        .image-id {
+            font-size: 54px; /* Example font size */
+            margin-top: 20px; /* Space between the QR code and the ID */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <p>ขอบคุณที่ลงทะเบียนกับทางเรา</p>
+    <p><b>QR CODE</b> นี้ใช้เพื่อออกและชำระค่าที่จอดรถ</p>
+    <!-- Image displayed below -->
+    <img src="<%= imageUrl %>" alt="QR Code">
+    <!-- Dynamic text below the QR code -->
+    <p class="image-id"><%= imageId %></p>
+</div>
+</body>
+</html>

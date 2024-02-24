@@ -1,0 +1,37 @@
+[
+    {
+      "locationtypeID": "1",
+      "location_en": "EEC Automation Park",
+      "location_th": "ศูนย์ความร่วมมือเพื่อการพัฒนาบุคลากรและเทคโนโลยีด้านอุตสาหกรรม 4.0"
+    },
+    {
+        "locationtypeID": "2",
+        "location_en": "Department of Electrical Engineering",
+        "location_th": "ตึกภาควิชาวิศวกรรมไฟฟ้า"
+    },
+    {
+        "locationtypeID": "3",
+        "location_en": "Department of Mechanical Engineering",
+        "location_th": "ตึกภาควิชาวิศวกรรมเครื่องกล"
+    },
+    {
+        "locationtypeID": "4",
+        "location_en": "Department of Civil Engineering",
+        "location_th": "ตึกภาควิชาวิศวกรรมโยธา"
+    },
+    {
+        "locationtypeID": "5",
+        "location_en": "Department of Chemical Engineering",
+        "location_th": "ตึกภาควิชาวิศวกรรมเคมี"
+    },
+    {
+        "locationtypeID": "6",
+        "location_en": "Department of Industrial Engineering",
+        "location_th": "ตึกภาควิชาวิศวกรรมอุตสาหการ"
+    },
+    {
+        "locationtypeID": "7",
+        "location_en": "M Engineering BUU",
+        "location_th": "ตึก M คณะวิศวกรรมศาสตร์"
+    }
+]

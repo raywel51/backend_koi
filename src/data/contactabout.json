@@ -1,0 +1,30 @@
+[
+    {
+      "contactID": "1",
+      "contact_about": "สอน"
+    },
+    {
+        "contactID": "2",
+        "contact_about": "เรียน"
+    },
+    {
+        "contactID": "3",
+        "contact_about": "ประชุม"
+    },
+    {
+        "contactID": "4",
+        "contact_about": "เยี่ยมชม EEC Automation Park"
+    },
+    {
+        "contactID": "5",
+        "contact_about": "พบอาจารย์"
+    },
+    {
+        "contactID": "6",
+        "contact_about": "เข้าร่วมกิจกรรม"
+    },
+    {
+        "contactID": "7",
+        "contact_about": "เหตุผลอื่นๆ"
+    }
+]

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+        }
+
+        .header {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            margin: 20px 0;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        ยืนยัน QR Code สำหรับเข้าสู่พื้นที่
+    </div>
+    <div class="content">
+        <p>คุณ {name} ได้ทำการยืนยัน QR Code สำหรับเข้าสู่พื้นที่ โดยสามารถยืนยันด้วยการกดปุ่ม:</p>
+        <p>เบอร์โทร: {phoneNumber}</p>
+        <p>อีเมล: {email}</p>
+        <p>วันที่: {date}</p>
+        <div style="text-align: center;">
+            <a class="button" href="{confirmUrl}"
+               style="color: white; text-decoration: none; background-color: #007bff; padding: 10px 20px; border-radius: 5px; display: inline-block; width: 60%">ยืนยัน</a>
+        </div>
+    </div>
+    <div class="footer">
+        กรุณาอย่าตอบอีเมลนี้
+    </div>
+</div>
+</body>
+</html>

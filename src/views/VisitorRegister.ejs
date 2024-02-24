@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Visitor Information</title>
+    <!-- Link to Tailwind CSS CDN for simplicity, you might want to install it locally for production -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto p-5">
+    <h1 class="text-2xl font-bold text-center mb-5">Visitor Information Form</h1>
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="visitor_name">Visitor Name:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="visitor_name" name="visitor_name" type="text" placeholder="Visitor Name">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Contact:</label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact" name="contact">
+                <% contactList.forEach(function(it) { %>
+                    <option value="<%= it.id %>"><%= it.contact_about %></option>
+                <% }); %>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Location:</label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="location" name="contact">
+                <% locationList.forEach(function(it) { %>
+                    <option value="<%= it.id %>"><%= it.location_en %></option>
+                <% }); %>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="mobile_phone">Mobile Phone:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="mobile_phone" name="mobile_phone" type="text" placeholder="Mobile Phone">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Email">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="plate">Plate:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="plate" name="plate" type="text" placeholder="Plate">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Start Time:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_time" name="start_time" type="datetime-local" placeholder="Start Time">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Final Time:</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="final_time" name="final_time" type="datetime-local" placeholder="Final Time">
+        </div>
+        <div class="flex items-center justify-between">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="sentApi()">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="exampleModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="dialogTitle" role="dialog" aria-modal="true">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded shadow-md">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="dialogTitle" class="text-lg font-bold">Dialog Title</h3>
+                <button id="closeDialogBtn" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="dialog-content">
+                Dialog content goes here...
+            </div>
+            <div class="flex justify-end mt-4">
+                <button id="saveDialogBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none">Save changes</button>
+                <button id="cancelDialogBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    const visitorNameField = document.getElementById('visitor_name');
+    const contactField = document.getElementById('contact');
+    const locationField = document.getElementById('location');
+    const mobilePhoneField = document.getElementById('mobile_phone');
+    const emailField = document.getElementById('email');
+    const plateField = document.getElementById('plate');
+    const startTimeField = document.getElementById('start_time');
+    const finalTimeField = document.getElementById('final_time');
+    const dialog = document.getElementById('exampleModal');
+
+    const sentApi = () => {
+
+        const formData = {
+            visitor_name: visitorNameField.value,
+            contact: contactField.options[contactField.selectedIndex].text,
+            place: locationField.options[contactField.selectedIndex].text,
+            mobile_phone: mobilePhoneField.value,
+            email: emailField.value,
+            plate: plateField.value,
+            start_time: startTimeField.value,
+            final_time: finalTimeField.value
+        };
+
+        axios.post('/v1/visitor/register', formData)
+            .then(function (response) {
+                console.log('Form data submitted successfully:', response);
+                // Handle success response here
+                //window.location.href = 'http://localhost:3001/view/'+response.data.data.qrKey;
+                alert("ลงทะเบียนสำเร็จแล้ว โปรดรอการอนุมัติ");
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+
+    saveDialogBtn.addEventListener('click', function() {
+        // Handle save button click
+        dialog.classList.add('hidden');
+    });
+
+    cancelDialogBtn.addEventListener('click', function() {
+        // Handle cancel button click
+        dialog.classList.add('hidden');
+    });
+
+    closeDialogBtn.addEventListener('click', function() {
+        dialog.classList.add('hidden');
+    });
+</script>

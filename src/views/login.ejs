@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VISITOR | Updater | DIR</title>
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www.buu.ac.th/wp-content/uploads/2023/04/site_logo_512-300x300.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.buu.ac.th/wp-content/uploads/2023/04/site_logo_512-300x300.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.buu.ac.th/wp-content/uploads/2023/04/site_logo_512-300x300.png">
+    <link rel="manifest" href="/ico/site.webmanifest">
+    <link rel="mask-icon" href="/ico/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuButton = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
+            const mobileMenu = document.getElementById('navbar-sticky'); // Assuming 'navbar-sticky' is the ID of your mobile menu
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+    <meta name="robots" content="noindex">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        main {
+            flex: 1;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<div purpose="page-wrap">
+    <header class="bg-gray-800 sm:flex sm:justify-between p-4">
+        <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><img class="mx-auto w-16" src="https://www.buu.ac.th/wp-content/uploads/2023/04/logo.png" alt="Your Company"></span>
+                </a>
+
+            </div>
+        </nav>
+        <br>
+    </header>
+
+    <nav class="bg-grey-light p-3 rounded font-sans w-full m-4">
+        <ol class="list-reset flex text-grey-dark">
+            <li><a href="/" class="text-blue font-bold">Home</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li>login</li>
+        </ol>
+    </nav>
+
+    <div id="login">
+        <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                <img class="mx-auto w-40" src="https://www.buu.ac.th/wp-content/uploads/2023/04/logo.png" alt="Your Company">
+                <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+            </div>
+
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div class="space-y-6">
+                    <div>
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+                        <div class="mt-2">
+                            <input id="username" name="username" type="text" autocomplete="username" required class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                        <div class="mt-2">
+                            <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+
+                    <div>
+                        <button onclick="checkLogin()" class="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">Sign in</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="bg-light py-4 flex justify-center items-end">
+        <small purpose="footer-page" class="text-gray-600 text-center-on-small sm:text-right mt-2 sm:mt-0">
+            Copyright &copy; 2066 <a target="_blank" href="https://www.buu.ac.th" class="text-blue-600">มหาวิทยาลัยบูรพา</a>.All rights reserved.
+        </small>
+    </footer>
+
+</div>
+</html>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="@sweetalert2/theme-material-ui/material-ui.css">
+<script>
+
+    const email = document.getElementById("username")
+    const password = document.getElementById("password")
+
+    const checkLogin = () => {
+
+        const formData = {
+            username: email.value,
+            password: password.value
+        }
+
+        axios.post('/users/login', formData)
+            .then(function (response) {
+                const token = response.data.token;
+                document.cookie = `token=${token}; expires= ${new Date(Date.now() + 86400000).toUTCString()}; path=/`;
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: response.data.message
+                }).then(() => {
+                    window.location.href = '/main';
+                });
+
+
+            })
+            .catch(function (error) {
+                if (error.response && error.response.data) {
+                    const errorMessage = error.response.data.message;
+                    Swal.fire({
+                        html: `
+                            <div class="my-4">
+                                <p>${errorMessage}</p>
+                            </div>
+                            <button onclick="Swal.close()" class="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">ตกลง</button>
+                        `,
+                        showConfirmButton: false,
+                    })
+
+                } else {
+                    alert('An error occurred!');
+                }
+            });
+    }
+</script>
