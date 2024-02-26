@@ -34,7 +34,7 @@ export const testSentEmail = (name: string, phoneNumber: string, email: string, 
 
     const mailOptions = {
         from: 'raywelnoreply@gmail.com',
-        to: 'Kotchakorn52001@gmail.com',
+        to: 'kittayawat.aong@gmail.com, Kotchakorn52001@gmail.com',
         subject: 'QR Code รอการอนุมัติ',
         html: htmlContent
     };

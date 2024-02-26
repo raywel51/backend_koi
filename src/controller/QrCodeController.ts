@@ -11,7 +11,7 @@ export const QrCodeController = async (req: Request, res: Response): Promise<voi
 
     res.type('image/png');
 
-    QRCode.toFileStream(res, key, {
+    QRCode.toFileStream(res, process.env.HOST_NAME + '/view/' + key, {
         type: 'png',
         errorCorrectionLevel: 'H',
         margin: 1,

@@ -59,14 +59,14 @@ export const RegisterVisitorController = async (req: Request, res: Response): Pr
         let date = new Date();
 
         // await testSentSMS(visitorData.mobile_phone, qrKey)
-//        testSentEmail(
-//            visitorData.visitor_name,
-//            visitorData.mobile_phone,
-//            visitorData.email,
-//            convertNormalTime(date),
-//            qrKey,
-//        )
-//        await NotifyHelper(visitorLogEntity, qrKey)
+       testSentEmail(
+           visitorData.visitor_name,
+           visitorData.mobile_phone,
+           visitorData.email,
+           convertNormalTime(date),
+           qrKey,
+       )
+       await NotifyHelper(visitorLogEntity, qrKey)
 
         return res.status(200).json({
             status: true,

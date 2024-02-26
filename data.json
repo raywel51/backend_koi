@@ -1,20 +1,4 @@
 {
-  "update_time": "26-02-2024 | 16:00",
-  "visitors": [
-    {
-      "id": 56,
-      "pin_code": "VM2QOL",
-      "qr_key": "CNOKy74AEb",
-      "visitor_name": "นนทวัฒน์ กิตยวัฒน์",
-      "location": "EEC Automation Park",
-      "contact_about": "เรียน",
-      "mobile_phone": "0656876818",
-      "email": "kittayawat.aong@gmail.com",
-      "car_registration": "4กย3049",
-      "create_time": "25-02-2024 | 19:34",
-      "entry_time": "25-02-2024 | 19:34",
-      "exit_time": "28-02-2024 | 19:34",
-      "approve": true
-    }
-  ]
+  "update_time": "26-02-2024 | 18:00",
+  "visitors": []
 }

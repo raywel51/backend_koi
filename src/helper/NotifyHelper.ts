@@ -10,11 +10,11 @@ export const NotifyHelper = async (visitorLogEntity: VisitorLogEntity, qrKey: st
     let data = qs.stringify({
         'message': 'รายละเอียดการนัดหมาย\n' +
             'คุณ : '+ visitorLogEntity.visitor_name +'\n' +
-            'โครงการ : '+ visitorLogEntity.visitor_name +'\n' +
-            'พบคุณ : '+ visitorLogEntity.mobile_phone +'\n' +
-            'ติดต่อเรื่อง : '+ visitorLogEntity.contact_about +'\n\n' +
+            'ติดต่อเรื่อง : '+ visitorLogEntity.contact_about +'\n' +
+            'สถานที่ : '+ visitorLogEntity.location +'\n\n' +
             'รายละเอียดเพิ่มเติม\n' +
             'เบอร์โทรศัพท์ : '+ visitorLogEntity.mobile_phone +'\n' +
+            'ป้ายทะเบียนรถ : '+ visitorLogEntity.car_registration +'\n' +
             'วันที่ : '+ formatDate(visitorLogEntity.entry_time) +'\n' +
             'จนถึง : '+ formatDate(visitorLogEntity.exit_time) +'\n' +
             link

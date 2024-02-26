@@ -16,7 +16,7 @@ export const ApproveLinkController = async (req: Request, res: Response) => {
         const contact_about = visitorExists?.contact_about
         const location = visitorExists?.location
 
-        const confirmUrl =  process.env.HOST_NAME +'/v1/approve/' + visitorExists?.qrKey
+        const confirmUrl =  process.env.HOST_NAME +'/api/v1/approve/' + visitorExists?.qrKey
 
         return res.render('approve', {
             pageTitle: 'Visitor Registration',
