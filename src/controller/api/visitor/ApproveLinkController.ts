@@ -1,6 +1,6 @@
 import e, {Request, Response} from "express";
-import {VisitorLogRepository} from "../../repository/VisitorLogRepository";
-import {convertNormalTime} from "../../helper/TimeFormator";
+import {VisitorLogRepository} from "../../../repository/VisitorLogRepository";
+import {convertNormalTime} from "../../../helper/TimeFormator";
 
 export const ApproveLinkController = async (req: Request, res: Response) => {
     try {

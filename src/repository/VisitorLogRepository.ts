@@ -36,6 +36,10 @@ export class VisitorLogRepository {
         return count > 0;
     }
 
+    async existsByApprove(): Promise<VisitorLogEntity[]> {
+        return await this.repo.find({ where: { approve : true } });
+    }
+
     async updateApprove(qrKey: string) {
         await this.repo
             .createQueryBuilder()

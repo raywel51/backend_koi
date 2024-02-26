@@ -1,21 +1,18 @@
 import {Request, Response} from "express";
-import axios from "axios";
 
-export const HistoryWebController = async (req: Request, res: Response): Promise<void | Response> => {
+export const CheckInViewController = async (req: Request, res: Response) => {
+
     try {
         const token = req.cookies.token;
         if (token) {
-            const response = await axios.get(process.env.HOST_NAME+':'+process.env.PORT+'/api/v1/history')
 
-            return res.render('history', {
-                pageTitle: 'LETMEIN: Smart Living and Workplace Platform',
-                data: response.data.data,
+            return res.render('check_in_views', {
+                pageTitle: 'Visitor Registration',
                 username: 'koi'
             });
         } else {
             res.redirect('/login')
         }
-
     } catch (e) {
         console.error(e);
 

@@ -1,6 +1,6 @@
 import e, {Request, Response} from "express";
-import {VisitorLogRepository} from "../../repository/VisitorLogRepository";
-import {VisitorLogEntity} from "../../entity/VisitorLogEntity";
+import {VisitorLogRepository} from "../../../repository/VisitorLogRepository";
+import {VisitorLogEntity} from "../../../entity/VisitorLogEntity";
 
 export const CheckGuestController = async (req: Request, res: Response): Promise<e.Response> => {
     try {
@@ -15,7 +15,7 @@ export const CheckGuestController = async (req: Request, res: Response): Promise
             })
         }
 
-        const dataQrKey = pincode.length === 4
+        const dataQrKey = pincode.length === 6
             ? await visitorLogRepository.getByPinCode(pincode)
             : await visitorLogRepository.getByQrKey(pincode);
 

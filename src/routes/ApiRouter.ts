@@ -2,43 +2,49 @@ import express from 'express';
 
 const router = express.Router();
 
-import {RegisterVisitorController} from '../controller/visitor/RegisterVisitorController';
+import {RegisterVisitorController} from '../controller/api/visitor/RegisterVisitorController';
 import {QrCodeController} from "../controller/QrCodeController";
-import {ApproveController} from "../controller/visitor/ApproveController";
+import {ApproveController} from "../controller/api/visitor/ApproveController";
 import {QRCodeWebController} from "../controller/webview/QRCodeWebController";
-import {UserRegisterController} from "../controller/users/CredentialController/UserRegisterController";
-import {UserLoginController} from "../controller/users/CredentialController/UserLoginController";
-import {CheckGuestController} from "../controller/visitor/CheckGuestController";
+import {UserRegisterController} from "../controller/api/users/CredentialController/UserRegisterController";
+import {UserLoginController} from "../controller/api/users/CredentialController/UserLoginController";
+import {CheckGuestController} from "../controller/api/visitor/CheckGuestController";
 import {HistoryQrCodeController} from "../controller/HistoryQrCodeController";
-import {ContactListController} from "../controller/ValueListController/ContactListController";
-import {LocationListController} from "../controller/ValueListController/LocationListController";
+import {ContactListController} from "../controller/api/ValueListController/ContactListController";
+import {LocationListController} from "../controller/api/ValueListController/LocationListController";
 import {BasicController} from "../controller/BasicController";
-import {ApproveLinkController} from "../controller/visitor/ApproveLinkController";
+import {ApproveLinkController} from "../controller/api/visitor/ApproveLinkController";
 import {LoginWebController} from "../controller/webview/LoginWebController";
 import {HistoryWebController} from "../controller/webview/HistoryWebController";
 import {errPage} from "../controller/ErrPage";
+import {MemberRegisterPages} from "../controller/webview/MemberRegisterPages";
+import {CheckInViewController} from "../controller/webview/CheckInViewController";
+import { RegisterCheckInController } from '../controller/api/visitor/RegisterCheckInController';
 
 router.get('/', BasicController);
 router.get('/login', LoginWebController);
 router.get('/main', HistoryWebController);
+router.get('/check-in', MemberRegisterPages);
+router.get('/check-guest', CheckInViewController);
 
 router.get('/view/:key', QRCodeWebController);
 router.get('/view/approve/:key', ApproveLinkController);
 
-router.post('/users/login' , UserLoginController)
-router.post('/users/register' , UserRegisterController)
+router.post('/api/users/login', UserLoginController)
+router.post('/api/users/register', UserRegisterController)
 
-router.get('/v1/qrcode/:key', QrCodeController);
+router.get('/api/v1/qrcode/:key', QrCodeController);
 
-router.get('/v1/approve/:key', ApproveController);
+router.get('/api/v1/approve/:key', ApproveController);
 
-router.get('/v1/history', HistoryQrCodeController);
+router.get('/api/v1/history', HistoryQrCodeController);
 
-router.get('/v1/list/contact' , ContactListController)
-router.get('/v1/list/location' , LocationListController)
+router.get('/api/v1/list/contact', ContactListController)
+router.get('/api/v1/list/location', LocationListController)
 
-router.post('/v1/visitor/register', RegisterVisitorController);
-router.post('/v1/visitor/check-guest', CheckGuestController);
+router.post('/api/v1/visitor/register', RegisterVisitorController);
+router.post('/api/v1/visitor/check-in', RegisterCheckInController);
+router.post('/api/v1/visitor/check-guest', CheckGuestController);
 
 router.get('*', errPage);
 

@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
-import {ContactRepository} from "../../repository/ContactRepository";
-import {Locationtype} from "../../entity/Locationtype";
-import {LocationRepository} from "../../repository/LocationRepository";
+import {ContactRepository} from "../../../repository/ContactRepository";
+import {Locationtype} from "../../../entity/Locationtype";
+import {LocationRepository} from "../../../repository/LocationRepository";
 
 export const LocationListController = async (req: Request, res: Response) => {
     try {

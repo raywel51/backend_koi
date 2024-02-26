@@ -1,8 +1,8 @@
 import e, {Request, Response} from "express";
-import {PasswordEncrypt} from "../../../helper/PasswordEncrypt";
-import {VisitorLogEntity} from "../../../entity/VisitorLogEntity";
-import {UserEntity} from "../../../entity/UserEntity";
-import {UserRepository} from "../../../repository/UserRepository";
+import {PasswordEncrypt} from "../../../../helper/PasswordEncrypt";
+import {VisitorLogEntity} from "../../../../entity/VisitorLogEntity";
+import {UserEntity} from "../../../../entity/UserEntity";
+import {UserRepository} from "../../../../repository/UserRepository";
 
 export const UserRegisterController = async (req: Request, res: Response): Promise<e.Response> => {
     try {
@@ -13,14 +13,14 @@ export const UserRegisterController = async (req: Request, res: Response): Promi
         if (!username) {
             return res.status(400).json({
                 status: false,
-                message: 'no Username'
+                message: 'Username is required'
             });
         }
 
         if (!password) {
             return res.status(400).json({
                 status: false,
-                message: 'no Password'
+                message: 'Password is required'
             });
         }
 
@@ -30,7 +30,7 @@ export const UserRegisterController = async (req: Request, res: Response): Promi
         if (userGetName) {
             return res.status(400).json({
                 status: false,
-                message: "this username is register"
+                message: "This username is already registered"
             });
         }
 
@@ -47,7 +47,7 @@ export const UserRegisterController = async (req: Request, res: Response): Promi
 
         return res.status(200).json({
             status: true,
-            message: 'User Register Successfully'
+            message: 'User registered successfully'
         });
     } catch (e) {
         console.error(e);

@@ -6,7 +6,7 @@ import {Locationtype} from "../entity/Locationtype";
 import {ContactEntity} from "../entity/ContactEntity";
 import {UserEntity} from "../entity/UserEntity";
 
-dotenv.config();
+dotenv.config({path: `.env.${process.env.NODE_ENV}`});
 
 const port: number | undefined = process.env.DB_PORT as number | undefined;
 export const AppDataSource = new DataSource(

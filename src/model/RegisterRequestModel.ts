@@ -23,7 +23,19 @@ export class RegisterRequestModel {
         if (!this.visitor_name) {
             return 'Visitor name is required.';
         } else if (!this.place) {
-            return 'Visitor name is required.';
+            return 'place is required.';
+        } else if (!this.contact) {
+            return 'contact is required.';
+        } else if (!this.mobile_phone) {
+            return 'mobile_phone is required.';
+        } else if (!this.email) {
+            return 'email is required.';
+        } else if (!this.plate) {
+            return 'plate is required.';
+        } else if (!this.start_time) {
+            return 'start_time is required.';
+        } else if (!this.final_time) {
+            return 'final_time is required.';
         }
         return undefined;
     }

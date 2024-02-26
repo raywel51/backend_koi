@@ -29,7 +29,10 @@ export class VisitorLogEntity {
     @Column()
     car_registration!: string
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column()
+    channel!: string
+
+    @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     create_time!: Date
 
     @BeforeInsert()
@@ -37,10 +40,10 @@ export class VisitorLogEntity {
         this.create_time = new Date();
     }
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column({type: 'timestamp'})
     entry_time!: Date
 
-    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    @Column({type: 'timestamp'})
     exit_time!: Date
 
     @Column()

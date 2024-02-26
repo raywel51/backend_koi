@@ -1,6 +1,6 @@
 import e, {Request, Response} from "express";
-import {UserRepository} from "../../../repository/UserRepository";
-import {PasswordEncrypt} from "../../../helper/PasswordEncrypt";
+import {UserRepository} from "../../../../repository/UserRepository";
+import {PasswordEncrypt} from "../../../../helper/PasswordEncrypt";
 
 import jwt from 'jsonwebtoken';
 

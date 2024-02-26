@@ -13,62 +13,83 @@
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="visitor_name">Visitor Name:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="visitor_name" name="visitor_name" type="text" placeholder="Visitor Name">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="visitor_name" name="visitor_name" type="text" placeholder="Visitor Name">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Contact:</label>
-            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="contact" name="contact">
+            <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="contact" name="contact">
                 <% contactList.forEach(function(it) { %>
-                    <option value="<%= it.id %>"><%= it.contact_about %></option>
+                <option value="<%= it.id %>"><%= it.contact_about %></option>
                 <% }); %>
             </select>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Location:</label>
-            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="location" name="contact">
+            <select
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="location" name="contact">
                 <% locationList.forEach(function(it) { %>
-                    <option value="<%= it.id %>"><%= it.location_en %></option>
+                <option value="<%= it.id %>"><%= it.location_en %></option>
                 <% }); %>
             </select>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="mobile_phone">Mobile Phone:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="mobile_phone" name="mobile_phone" type="text" placeholder="Mobile Phone">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="mobile_phone" name="mobile_phone" type="text" placeholder="Mobile Phone">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Email">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email" name="email" type="email" placeholder="Email">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="plate">Plate:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="plate" name="plate" type="text" placeholder="Plate">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="plate" name="plate" type="text" placeholder="Plate">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Start Time:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="start_time" name="start_time" type="datetime-local" placeholder="Start Time">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="start_time" name="start_time" type="datetime-local" placeholder="Start Time">
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Final Time:</label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="final_time" name="final_time" type="datetime-local" placeholder="Final Time">
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="final_time" name="final_time" type="datetime-local" placeholder="Final Time">
         </div>
         <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="sentApi()">
+            <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                onclick="sentApi()">
                 Submit
             </button>
         </div>
     </div>
 </div>
 
-<div id="exampleModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="dialogTitle" role="dialog" aria-modal="true">
+<div id="exampleModal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="dialogTitle" role="dialog"
+     aria-modal="true">
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white p-8 rounded shadow-md">
             <div class="flex justify-between items-center mb-4">
                 <h3 id="dialogTitle" class="text-lg font-bold">Dialog Title</h3>
                 <button id="closeDialogBtn" class="text-gray-500 hover:text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
@@ -76,8 +97,14 @@
                 Dialog content goes here...
             </div>
             <div class="flex justify-end mt-4">
-                <button id="saveDialogBtn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none">Save changes</button>
-                <button id="cancelDialogBtn" class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none">Cancel</button>
+                <button id="saveDialogBtn"
+                        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                    Save changes
+                </button>
+                <button id="cancelDialogBtn"
+                        class="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
@@ -86,6 +113,8 @@
 </html>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="@sweetalert2/theme-material-ui/material-ui.css">
 <script>
 
     const visitorNameField = document.getElementById('visitor_name');
@@ -111,7 +140,7 @@
             final_time: finalTimeField.value
         };
 
-        axios.post('/v1/visitor/register', formData)
+        axios.post('/api/v1/visitor/register', formData)
             .then(function (response) {
                 console.log('Form data submitted successfully:', response);
                 // Handle success response here
@@ -119,21 +148,35 @@
                 alert("ลงทะเบียนสำเร็จแล้ว โปรดรอการอนุมัติ");
             })
             .catch(function (error) {
-                alert(error);
+                if (error.response && error.response.data) {
+                    const errorMessage = error.response.data.message;
+                    Swal.fire({
+                        html: `
+                            <div class="my-4">
+                                <p>${errorMessage}</p>
+                            </div>
+                            <button onclick="Swal.close()" class="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">ตกลง</button>
+                        `,
+                        showConfirmButton: false,
+                    })
+
+                } else {
+                    alert('An error occurred!');
+                }
             });
     }
 
-    saveDialogBtn.addEventListener('click', function() {
+    saveDialogBtn.addEventListener('click', function () {
         // Handle save button click
         dialog.classList.add('hidden');
     });
 
-    cancelDialogBtn.addEventListener('click', function() {
+    cancelDialogBtn.addEventListener('click', function () {
         // Handle cancel button click
         dialog.classList.add('hidden');
     });
 
-    closeDialogBtn.addEventListener('click', function() {
+    closeDialogBtn.addEventListener('click', function () {
         dialog.classList.add('hidden');
     });
 </script>

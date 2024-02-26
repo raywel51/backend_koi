@@ -21,9 +21,15 @@ export const QRCodeWebController = async (req: Request, res: Response) => {
         }
 
         return res.render('QRCode', {
-            pageTitle: 'LETMEIN: Smart Living and Workplace Platform',
-            imageUrl: '/v1/qrcode/' + visitorExists.qrKey,
-            imageId: visitorExists.pinCode
+            pageTitle: 'BUU VMS: QR Code',
+            imageUrl: '/api/v1/qrcode/' + visitorExists.qrKey,
+            imageId: visitorExists.pinCode,
+            visitor_name: visitorExists.visitor_name,
+            mobile_phone: visitorExists.mobile_phone,
+            email: visitorExists.email,
+            contact_about: visitorExists.contact_about,
+            location: visitorExists.location,
+            approve: visitorExists.approve
         });
 
     } catch (e) {

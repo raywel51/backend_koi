@@ -1,13 +1,13 @@
 import e, {Request, Response} from "express";
 import QRCode from 'qrcode';
-import {RegisterRequestModel} from "../../model/RegisterRequestModel";
-import {generatePinCode, generateQrKey} from "../../helper/GenerateValueKey";
-import {VisitorLogRepository} from "../../repository/VisitorLogRepository";
-import {VisitorLogEntity} from "../../entity/VisitorLogEntity";
-import {testSentSMS} from "../../helper/SMSHelper";
-import {testSentEmail} from "../../helper/MailHelper";
-import {convertNormalTime} from "../../helper/TimeFormator";
-import {NotifyHelper} from "../../helper/NotifyHelper";
+import {RegisterRequestModel} from "../../../model/RegisterRequestModel";
+import {generatePinCode, generateQrKey} from "../../../helper/GenerateValueKey";
+import {VisitorLogRepository} from "../../../repository/VisitorLogRepository";
+import {VisitorLogEntity} from "../../../entity/VisitorLogEntity";
+import {testSentSMS} from "../../../helper/SMSHelper";
+import {testSentEmail} from "../../../helper/MailHelper";
+import {convertNormalTime} from "../../../helper/TimeFormator";
+import {NotifyHelper} from "../../../helper/NotifyHelper";
 
 export const RegisterVisitorController = async (req: Request, res: Response): Promise<e.Response> => {
     try {
@@ -40,15 +40,18 @@ export const RegisterVisitorController = async (req: Request, res: Response): Pr
         }
 
         const visitorLogEntity: any = Object.assign(new VisitorLogEntity(), {
-            qrKey : qrKey,
-            pinCode : pinCode,
-            visitor_name : visitorData.visitor_name,
-            location : visitorData.place,
-            contact_about : visitorData.contact,
-            mobile_phone : visitorData.mobile_phone,
-            email : visitorData.email,
-            car_registration : visitorData.plate,
-            approve : 0
+            qrKey: qrKey,
+            pinCode: pinCode,
+            visitor_name: visitorData.visitor_name,
+            location: visitorData.place,
+            contact_about: visitorData.contact,
+            mobile_phone: visitorData.mobile_phone,
+            email: visitorData.email,
+            car_registration: visitorData.plate,
+            approve: 0,
+            entry_time: visitorData.start_time,
+            exit_time: visitorData.final_time,
+            channel: "WebVisitor",
         })
 
         await visitorLogRepository.create(visitorLogEntity)
@@ -56,21 +59,21 @@ export const RegisterVisitorController = async (req: Request, res: Response): Pr
         let date = new Date();
 
         // await testSentSMS(visitorData.mobile_phone, qrKey)
-        testSentEmail(
-            visitorData.visitor_name,
-            visitorData.mobile_phone,
-            visitorData.email,
-            convertNormalTime(date),
-            qrKey,
-        )
-        await NotifyHelper(visitorLogEntity, qrKey)
+//        testSentEmail(
+//            visitorData.visitor_name,
+//            visitorData.mobile_phone,
+//            visitorData.email,
+//            convertNormalTime(date),
+//            qrKey,
+//        )
+//        await NotifyHelper(visitorLogEntity, qrKey)
 
         return res.status(200).json({
             status: true,
             message: 'QR code has been generated successfully.',
             data: visitorLogEntity,
-            qr_image: process.env.HOST_NAME +'/v1/qrcode/' + qrKey,
-            approve_link: process.env.HOST_NAME +'/v1/approve/' + qrKey,
+            qr_image: process.env.HOST_NAME + '/v1/qrcode/' + qrKey,
+            approve_link: process.env.HOST_NAME + '/v1/approve/' + qrKey,
         });
     } catch (e) {
         console.error(e);

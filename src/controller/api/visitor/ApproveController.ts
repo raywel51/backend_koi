@@ -1,6 +1,6 @@
 import e, {Request, Response} from "express";
-import {VisitorLogRepository} from "../../repository/VisitorLogRepository";
-import {testSentSMS} from "../../helper/SMSHelper";
+import {VisitorLogRepository} from "../../../repository/VisitorLogRepository";
+import {testSentSMS} from "../../../helper/SMSHelper";
 
 export const ApproveController = async (req: Request, res: Response): Promise<e.Response> => {
     try {

@@ -113,10 +113,10 @@
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                     <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <a href="/main" class="block py-2 pl-3 pr-4 text-black bg-yellow-400 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">หน้าแรก</a>
+                            <a href="/main" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">หน้าแรก</a>
                         </li>
                         <li>
-                            <a href="/check-in" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">ลงทะเบียนเข้า</a>
+                            <a href="/check-in" class="block py-2 pl-3 pr-4 text-black bg-yellow-400 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">ลงทะเบียนเข้า</a>
                         </li>
                         <li>
                             <a href="/check-out" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">ลงทะเบียนออก</a>
@@ -140,63 +140,78 @@
     </nav>
 
     <div class=" lg:px-8">
-        <p style="font-size: 40px">ประวัตการเข้าใช้งาน</p>
+        <h1 class="text-2xl font-bold mb-5">Visitor Information Form</h1>
     </div>
 
     <div id="main">
-        <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-            <table id="dataTable" class="w-full border-collapse">
-                <thead>
-                <tr>
-                    <th class="border px-4 py-2">ID</th>
-                    <th class="border px-4 py-2">ช่องทาง<br>การลงทะเบียน</th>
-                    <th class="border px-4 py-2">Pin Code</th>
-                    <th class="border px-4 py-2">ชื่อผู้มาติดต่อ</th>
-                    <th class="border px-4 py-2">สถานที่</th>
-                    <th class="border px-4 py-2">ติดต่อเรื่อง</th>
-                    <th class="border px-4 py-2">เบอร์โทร</th>
-                    <th class="border px-4 py-2">ทะเบียนรถ</th>
-                    <th class="border px-4 py-2">เวลาลงทะเบียน</th>
-                    <th class="border px-4 py-2">approve</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% data.forEach(function(item) { %>
-                    <tr>
-                        <td class="border px-4 py-2"><%= item.id %></td>
-                        <td class="border px-4 py-2"><%= item.channel %></td>
-                        <td class="border px-4 py-2"><%= item.pin_code %></td>
-                        <td class="border px-4 py-2"><%= item.visitor_name %></td>
-                        <td class="border px-4 py-2"><%= item.location %></td>
-                        <td class="border px-4 py-2"><%= item.contact_about %></td>
-                        <td class="border px-4 py-2"><%= item.mobile_phone %></td>
-                        <td class="border px-4 py-2"><%= item.car_registration %></td>
-                        <td class="border px-4 py-2"><%= item.create_time %></td>
-                        <td class="border px-4 py-2 justify-center">
-                            <button onclick="approveQrKey('<%= item.qr_key %>', '<%= item.approve %>')" class="btn text-white font-bold py-2 px-4 rounded"
-                                style="width: 100%; background-color: <%= item.approve ? 'green' : 'red' %>;">
-                                <%= item.approve ? 'Approved' : 'Approve' %>
-                            </button>
-                          </td>
-                          
-                    </tr>
+        <div class="container mx-auto p-5">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="visitor_name">Visitor Name:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="visitor_name" name="visitor_name" type="text" placeholder="Visitor Name">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Contact:</label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="contact" name="contact">
+                <% contactList.forEach(function(it) { %>
+                    <option value="<%= it.id %>"><%= it.contact_about %></option>
                 <% }); %>
+                </select>
+            </div>
 
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="contact">Location:</label>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="location" name="contact">
+                <% locationList.forEach(function(it) { %>
+                    <option value="<%= it.id %>"><%= it.location_en %></option>
+                <% }); %>
+                </select>
+            </div>
 
-                </tbody>
-            </table>
-
-            <br><br><br>
-
-            <script>
-                $(document).ready(function () {
-                    $('#dataTable').DataTable({
-                        "pagingType": "simple_numbers",
-                        "pageLength": 100,
-                        "order": [[0, "desc"]]
-                    });
-                });
-            </script>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="mobile_phone">Mobile Phone:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="mobile_phone" name="mobile_phone" type="text" placeholder="Mobile Phone">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="email" name="email" type="email" placeholder="Email">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="plate">Plate:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="plate" name="plate" type="text" placeholder="Plate">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Start Time:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="start_time" name="start_time" type="datetime-local" placeholder="Start Time">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="final_time">Final Time:</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="final_time" name="final_time" type="datetime-local" placeholder="Final Time">
+            </div>
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    onclick="sentApi()">
+                Submit
+                </button>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -213,6 +228,17 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="@sweetalert2/theme-material-ui/material-ui.css">
 <script>
+
+    const visitorNameField = document.getElementById('visitor_name');
+    const contactField = document.getElementById('contact');
+    const locationField = document.getElementById('location');
+    const mobilePhoneField = document.getElementById('mobile_phone');
+    const emailField = document.getElementById('email');
+    const plateField = document.getElementById('plate');
+    const startTimeField = document.getElementById('start_time');
+    const finalTimeField = document.getElementById('final_time');
+    const dialog = document.getElementById('exampleModal');
+
     const logout = () => {
         Swal.fire({
             title: "คุณแน่ใจหรือไม่?",
@@ -236,30 +262,81 @@
         });
     }
 
-    const approveQrKey = (qrKey, approve) => {
-        console.log(approve)
-        console.log(qrKey)
-        if (!approve) {
-            
-        } else {
-            const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 1000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "warning",
-                    title: "ไม่สามารถอนุมัติได้"
-                })
-        }
-        
+    const sentApi = () => {
 
+        const formData = {
+            visitor_name: visitorNameField.value,
+            contact: contactField.options[contactField.selectedIndex].text,
+            place: locationField.options[contactField.selectedIndex].text,
+            mobile_phone: mobilePhoneField.value,
+            email: emailField.value,
+            plate: plateField.value,
+            start_time: startTimeField.value,
+            final_time: finalTimeField.value
+        };
+
+        axios.post('/api/v1/visitor/check-in', formData)
+            .then(function (response) {
+                console.log('Form data submitted successfully:', response);
+
+                Swal.fire({
+                        html: `
+                        <div class="my-4 center" style="text-align: center;">
+                            <img src="${response.data.qr_image}" alt="QR Code" style="display: block; margin: 0 auto;">
+                            <p>${response.data.message}</p>
+                        </div>
+
+                        <div class="mb-4" style="display: flex;">
+                            <input
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="mobile_phone" name="mobile_phone" type="text" placeholder="Mobile Phone" value="${response.data.data.mobile_phone}">
+                            <button onclick="closeSwal()" class="flex-shrink-0 bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">ตกลง</button>
+                        </div>
+                        
+                        <button onclick="closeSwal()" class="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">ส่ง</button>
+                        `,
+                        showConfirmButton: false,
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.close) {
+                            closeSwal()
+                        }
+                    });
+
+            })
+            .catch(function (error) {
+                if (error.response && error.response.data) {
+                    const errorMessage = error.response.data.message;
+                    Swal.fire({
+                        html: `
+                            <div class="my-4">
+                                <p>${errorMessage}</p>
+                            </div>
+                            <button onclick="Swal.close()" class="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-yellow-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">ตกลง</button>
+                        `,
+                        showConfirmButton: false,
+                    })
+
+                } else {
+                    alert('An error occurred!');
+                }
+            });
+
+    }
+
+    const closeSwal = () => {
+        Swal.close();
+        clearForm();
+    }
+
+    const clearForm = () => {
+        visitorNameField.value = '';
+        contactField.value = '';
+        locationField.value = '';
+        mobilePhoneField.value = '';
+        emailField.value = '';
+        plateField.value = '';
+        startTimeField.value = '';
+        finalTimeField.value = '';
     }
 
 </script>

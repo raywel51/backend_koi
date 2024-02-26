@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {ContactRepository} from "../../repository/ContactRepository";
+import {ContactRepository} from "../../../repository/ContactRepository";
 
 export const ContactListController = async (req: Request, res: Response) => {
     try {

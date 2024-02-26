@@ -25,7 +25,8 @@ export const HistoryQrCodeController = async (req: Request, res: Response) => {
             'create_time' : convertNormalTime(create_time) +' น.',
             'entry_time' : convertNormalTime(entry_time) +' น.',
             "exit_time": convertNormalTime(exit_time) +' น.',
-            "approve": item.approve
+            "approve": item.approve,
+            "channel": item.channel
         })
     })
 

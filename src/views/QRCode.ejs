@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Image Display</title>
+    <title>"<%= pageTitle %>"</title>
     <style>
         html, body {
             height: 100%;
@@ -28,16 +28,64 @@
             margin-top: 20px; /* Space between the QR code and the ID */
             font-weight: bold;
         }
+        .container {
+    position: relative;
+    text-align: center;
+}
+
+.approval-message, .reject-message {
+    margin-top: 10px;
+}
+
+.check-mark, .cross-mark {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.check-mark {
+    color: green;
+}
+
+.cross-mark {
+    color: red;
+}
+.logo-image {
+    width: 200px; /* Adjust this value to set the desired width */
+    height: auto; /* To maintain the aspect ratio */
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 0 auto;
+}
     </style>
 </head>
 <body>
-<div class="content">
+<!-- HTML และ EJS -->
+<div class="container">
     <p>ขอบคุณที่ลงทะเบียนกับทางเรา</p>
     <p><b>QR CODE</b> นี้ใช้เพื่อออกและชำระค่าที่จอดรถ</p>
-    <!-- Image displayed below -->
-    <img src="<%= imageUrl %>" alt="QR Code">
-    <!-- Dynamic text below the QR code -->
-    <p class="image-id"><%= imageId %></p>
+    <% if (approve) { %>
+        <img src="/assets/image/ic_qr_success.png" alt="QR Code" class="logo-image">
+        <div class="approval-message">
+            <span class="check-mark">&#10004;</span>
+            <span class="approve-text">qr โค้ดนี้ได้อนุมัติเรียบร้อย</span>
+        </div>
+        <br>
+        <img src="<%= imageUrl %>" alt="QR Code">
+        <p class="image-id"><%= imageId %></p>
+    <% } else { %>
+        <img src="/assets/image/ic_qr_fail.png" alt="QR Code" class="logo-image">
+        <div class="reject-message">
+            <span class="cross-mark">&#10008;</span>
+            <span class="reject-text">qr code นี้ยังไม่ได้รับการอนุมัติ</span>
+        </div>
+        <img src="<%= imageUrl %>" alt="QR Code">
+        <p class="image-id"><%= imageId %></p>
+    <% } %>
+    <p><b>ชื่อ:</b> <%= visitor_name %></p>
+    <p><b>เบอร์โทรศัพท์:</b> <%= mobile_phone %></p>
+    <p><b>อีเมลล์:</b> <%= email %></p>
+    <p><b>ติดต่อเรื่อง:</b> <%= contact_about %></p>
+    <p><b>สถานที่:</b> <%= location %></p>
 </div>
+
 </body>
 </html>

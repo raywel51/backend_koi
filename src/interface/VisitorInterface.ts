@@ -11,5 +11,5 @@ export interface VisitorInterface {
     create_time: string;
     entry_time: string;
     exit_time: string;
-    approve: boolean;
+    approve: Boolean;
 }
