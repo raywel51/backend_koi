@@ -5,7 +5,7 @@ export const HistoryWebController = async (req: Request, res: Response): Promise
     try {
         const token = req.cookies.token;
         if (token) {
-            const response = await axios.get(process.env.HOST_NAME+':'+process.env.PORT+'/api/v1/history')
+            const response = await axios.get(process.env.HOST_NAME+'/api/v1/history')
 
             return res.render('history', {
                 pageTitle: 'LETMEIN: Smart Living and Workplace Platform',
