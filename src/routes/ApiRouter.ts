@@ -20,12 +20,15 @@ import {errPage} from "../controller/ErrPage";
 import {MemberRegisterPages} from "../controller/webview/MemberRegisterPages";
 import {CheckInViewController} from "../controller/webview/CheckInViewController";
 import { RegisterCheckInController } from '../controller/api/visitor/RegisterCheckInController';
+import { LocalVisitorListController } from '../controller/api/ValueListController/LocalVisotorListController';
 
 router.get('/', BasicController);
 router.get('/login', LoginWebController);
 router.get('/main', HistoryWebController);
 router.get('/check-in', MemberRegisterPages);
 router.get('/check-guest', CheckInViewController);
+
+router.get('/local/reigster-local', LocalVisitorListController);
 
 router.get('/view/:key', QRCodeWebController);
 router.get('/view/approve/:key', ApproveLinkController);

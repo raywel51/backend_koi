@@ -80,4 +80,16 @@ export class DatabaseManager {
             return null;
         }
     }
+
+    public readAllData(): VisitorInterface[] | null {
+        try {
+            const data = fs.readFileSync(this.databasePath, 'utf-8');
+            const jsonData: Database = JSON.parse(data);
+    
+            return jsonData.visitors;
+        } catch (error) {
+            console.error('Error reading database:', error);
+            return null;
+        }
+    }
 }
