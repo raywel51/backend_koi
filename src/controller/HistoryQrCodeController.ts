@@ -23,10 +23,14 @@ export const HistoryQrCodeController = async (req: Request, res: Response) => {
             'email' : item.email,
             'car_registration' : item.car_registration,
             'create_time' : convertNormalTime(create_time) +' น.',
+            'create_time_raw' : create_time,
             'entry_time' : convertNormalTime(entry_time) +' น.',
             "exit_time": convertNormalTime(exit_time) +' น.',
+            "exit_time_raw": exit_time,
             "approve": item.approve,
-            "channel": item.channel
+            "channel": item.channel,
+            qr_image: process.env.HOST_NAME + '/api/v1/qrcode/' + item.qrKey,
+            approve_link: process.env.HOST_NAME + '/api/v1/approve/' + item.qrKey,
         })
     })
 

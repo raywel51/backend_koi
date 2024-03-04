@@ -21,6 +21,8 @@ import {MemberRegisterPages} from "../controller/webview/MemberRegisterPages";
 import {CheckInViewController} from "../controller/webview/CheckInViewController";
 import { RegisterCheckInController } from '../controller/api/visitor/RegisterCheckInController';
 import { LocalVisitorListController } from '../controller/api/ValueListController/LocalVisotorListController';
+import {RemoveQrCodeController} from "../controller/api/visitor/RemoveQrCodeController";
+import {EditQrCodeController} from "../controller/api/visitor/EditQrCodeController";
 
 router.get('/', BasicController);
 router.get('/login', LoginWebController);
@@ -41,6 +43,8 @@ router.get('/api/v1/qrcode/:key', QrCodeController);
 router.get('/api/v1/approve/:key', ApproveController);
 
 router.get('/api/v1/history', HistoryQrCodeController);
+router.delete('/api/v1/history/:key', RemoveQrCodeController);
+router.patch('/api/v1/history/:key', EditQrCodeController);
 
 router.get('/api/v1/list/contact', ContactListController)
 router.get('/api/v1/list/location', LocationListController)

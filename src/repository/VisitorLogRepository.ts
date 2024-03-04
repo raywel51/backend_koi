@@ -19,6 +19,31 @@ export class VisitorLogRepository {
         await this.repo.save(visitorLogEntity);
     }
 
+    async update(visitorLogEntity: VisitorLogEntity) {
+        const existingEntity = await this.repo.findOne({ where: { qrKey: visitorLogEntity.qrKey } });
+
+        if (existingEntity) {
+            // Update the existing entity with the new data
+            existingEntity.visitor_name = visitorLogEntity.visitor_name;
+            existingEntity.contact_about = visitorLogEntity.contact_about;
+            existingEntity.location = visitorLogEntity.location;
+            existingEntity.mobile_phone = visitorLogEntity.mobile_phone;
+            existingEntity.email = visitorLogEntity.email;
+            existingEntity.car_registration = visitorLogEntity.car_registration;
+            existingEntity.entry_time = visitorLogEntity.entry_time;
+            existingEntity.exit_time = visitorLogEntity.exit_time;
+
+            await this.repo.save(existingEntity);
+            return existingEntity; // Return the updated entity
+        } else {
+            throw new Error('Entity not found'); // Handle if entity not found
+        }
+    }
+
+    async remove(id: number) {
+        await this.repo.delete(id);
+    }
+
     async get() {
         return await this.repo.find();
     }
