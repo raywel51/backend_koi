@@ -20,7 +20,7 @@ export class VisitorLogRepository {
     }
 
     async update(visitorLogEntity: VisitorLogEntity) {
-        const existingEntity = await this.repo.findOne({ where: { qrKey: visitorLogEntity.qrKey } });
+        const existingEntity = await this.repo.findOne({ where: { pinCode: visitorLogEntity.pinCode } });
 
         if (existingEntity) {
             // Update the existing entity with the new data

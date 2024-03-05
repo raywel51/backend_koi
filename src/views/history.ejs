@@ -138,9 +138,10 @@
 
     <div class="flex justify-between lg:px-8">
         <p class="text-2xl">ประวัติการสร้างคิวอาร์โค้ด</p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            เพิ่มข้อมูล
+        <button onclick="window.location.href='/check-in'" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-2 px-4 rounded">
+            +เพิ่มข้อมูล
         </button>
+
     </div>
 
 
@@ -158,6 +159,7 @@
                     <th class="border px-4 py-2">เบอร์โทร</th>
                     <th class="border px-4 py-2">ทะเบียนรถ</th>
                     <th class="border px-4 py-2">เวลาลงทะเบียน</th>
+                    <th class="border px-4 py-2">สร้างโดย</th>
                     <th class="border px-4 py-2">action</th>
                     <th class="border px-4 py-2">approve</th>
                 </tr>
@@ -174,6 +176,7 @@
                         <td class="border px-4 py-2"><%= item.mobile_phone %></td>
                         <td class="border px-4 py-2"><%= item.car_registration %></td>
                         <td class="border px-4 py-2"><%= item.create_time %></td>
+                        <td class="border px-4 py-2"><%= item.create_by %></td>
                         <td class="border px-4 py-2 centered">
                             <i onclick="viewQrCode('<%= item.qr_image %>')" class="fas fa-search search-icon"></i>
                             <i onclick="editQrCode('<%= item.pin_code %>', '<%= item.visitor_name %>', '<%= item.location %>', '<%= item.contact_about %>', '<%= item.mobile_phone %>', '<%= item.car_registration %>', '<%= item.create_time_raw %>', '<%= item.email %>', '<%= item.exit_time_raw %>')"
@@ -367,16 +370,21 @@
             console.log('Start Time:', startTime);
             console.log('Final Time:', finalTime);
 
-            // Close the SweetAlert modal
             Swal.close();
-            //window.location.reload();
 
-            axios.delete('/api/v1/history/' + data, {
-
-            })
-                .then(function (response) {
+            axios.patch('/api/v1/history/', {
+                pinCode: id,
+                visitor_name: visitorName,
+                contact: contact,
+                location: location,
+                mobile: mobilePhone,
+                email: email,
+                plate: plate,
+                start_time: startTime,
+                final_time: finalTime
+            }).then(function (response) {
                     window.location.reload();
-                })
+            })
 
         });
     }

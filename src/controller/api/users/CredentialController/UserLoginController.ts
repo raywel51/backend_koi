@@ -27,13 +27,21 @@ export const UserLoginController = async (req: Request, res: Response): Promise<
 
         const newPassWord: string = PasswordEncrypt(password)
 
-        const token: string = jwt.sign({foo: 'bar'}, 'shhhhh');
-
         if (userGetName.password != newPassWord) {
             return res.status(400).json({
                 status: false,
                 message: "ไม่สามารถเข้าสู่ระบบได้ในขณะนี้"
             });
+        }
+
+        let token: string
+        if (!userGetName.token) {
+            const fullName = userGetName.name + " " + userGetName.lastname
+            token = jwt.sign({username: userGetName.username, realName: fullName}, 'shhhhh');
+
+            await userRepository.updateTokenByUsername(userGetName.id, token)
+        } else {
+            token = userGetName.token
         }
 
         return res.status(200).json({

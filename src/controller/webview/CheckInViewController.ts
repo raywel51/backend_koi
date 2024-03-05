@@ -1,4 +1,5 @@
 import {Request, Response} from "express";
+import {UserRepository} from "../../repository/UserRepository";
 
 export const CheckInViewController = async (req: Request, res: Response) => {
 
@@ -6,9 +7,12 @@ export const CheckInViewController = async (req: Request, res: Response) => {
         const token = req.cookies.token;
         if (token) {
 
+            const userRepository = UserRepository.getInstance()
+            const userByToken = await userRepository.getByToken(token.split('=')[1])
+
             return res.render('check_in_views', {
                 pageTitle: 'Visitor Registration',
-                username: 'koi'
+                username: userByToken?.name
             });
         } else {
             res.redirect('/login')

@@ -27,4 +27,20 @@ export class UserRepository {
     async getByUsername(username: string): Promise<UserEntity | null> {
         return await this.repo.findOne({ where: { username: username } });
     }
+
+    async getByToken(token: string): Promise<UserEntity | null> {
+        return await this.repo.findOne({ where: { token: token } });
+    }
+
+    async updateTokenByUsername(id: number, newToken: string): Promise<boolean> {
+        const user = await this.repo.findOne({ where: { id: id } });
+        if (!user) {
+            return false; // User not found
+        }
+
+        // Update the token
+        user.token = newToken;
+        await this.repo.save(user);
+        return true;
+    }
 }

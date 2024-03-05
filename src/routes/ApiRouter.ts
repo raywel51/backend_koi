@@ -44,7 +44,7 @@ router.get('/api/v1/approve/:key', ApproveController);
 
 router.get('/api/v1/history', HistoryQrCodeController);
 router.delete('/api/v1/history/:key', RemoveQrCodeController);
-router.patch('/api/v1/history/:key', EditQrCodeController);
+router.patch('/api/v1/history', EditQrCodeController);
 
 router.get('/api/v1/list/contact', ContactListController)
 router.get('/api/v1/list/location', LocationListController)

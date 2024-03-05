@@ -269,7 +269,13 @@
             final_time: finalTimeField.value
         };
 
-        axios.post('/api/v1/visitor/check-in', formData)
+
+
+        axios.post('/api/v1/visitor/check-in', formData, {
+            headers: {
+                'Authorization': document.cookie
+            }
+        })
             .then(function (response) {
                 console.log('Form data submitted successfully:', response);
 

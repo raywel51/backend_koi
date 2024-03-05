@@ -27,6 +27,7 @@ export const HistoryQrCodeController = async (req: Request, res: Response) => {
             'entry_time' : convertNormalTime(entry_time) +' น.',
             "exit_time": convertNormalTime(exit_time) +' น.',
             "exit_time_raw": exit_time,
+            "create_by": item.create_by,
             "approve": item.approve,
             "channel": item.channel,
             qr_image: process.env.HOST_NAME + '/api/v1/qrcode/' + item.qrKey,

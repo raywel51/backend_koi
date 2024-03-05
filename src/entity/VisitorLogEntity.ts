@@ -48,4 +48,7 @@ export class VisitorLogEntity {
 
     @Column()
     approve!: Boolean
+
+    @Column()
+    create_by!: string
 }
