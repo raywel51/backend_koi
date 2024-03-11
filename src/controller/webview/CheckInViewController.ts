@@ -8,11 +8,11 @@ export const CheckInViewController = async (req: Request, res: Response) => {
         if (token) {
 
             const userRepository = UserRepository.getInstance()
-            const userByToken = await userRepository.getByToken(token.split('=')[1])
+            const userByToken = await userRepository.getByToken(token)
 
             return res.render('check_in_views', {
                 pageTitle: 'Visitor Registration',
-                username: userByToken?.name
+                username: userByToken?.name + " " +userByToken?.lastname,
             });
         } else {
             res.redirect('/login')

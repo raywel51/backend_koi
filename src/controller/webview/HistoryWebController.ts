@@ -8,9 +8,10 @@ import {UserRepository} from "../../repository/UserRepository";
 export const HistoryWebController = async (req: Request, res: Response): Promise<void | Response> => {
     try {
         const token = req.cookies.token;
+        console.log("token = "+token)
         if (token) {
             const userRepository = UserRepository.getInstance()
-            const userByToken = await userRepository.getByToken(token.split('=')[1])
+            const userByToken = await userRepository.getByToken(token)
 
             const response = await axios.get(process.env.HOST_NAME+'/api/v1/history')
 
@@ -19,10 +20,11 @@ export const HistoryWebController = async (req: Request, res: Response): Promise
             const contactList = await contactRepository.get();
             const locationList = await locationRepository.get();
 
+            console.log(userByToken?.token)
             return res.render('history', {
                 pageTitle: 'LETMEIN: Smart Living and Workplace Platform',
                 data: response.data.data,
-                username: userByToken?.name,
+                username: userByToken?.name + " " +userByToken?.lastname,
                 locationList: locationList,
                 contactList: contactList,
             });

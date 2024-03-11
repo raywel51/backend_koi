@@ -10,7 +10,7 @@ export const MemberRegisterPages = async (req: Request, res: Response) => {
         if (token) {
 
             const userRepository = UserRepository.getInstance()
-            const userByToken = await userRepository.getByToken(token.split('=')[1])
+            const userByToken = await userRepository.getByToken(token)
 
             const contactRepository = ContactRepository.getInstance()
             const locationRepository = LocationRepository.getInstance()
@@ -21,7 +21,7 @@ export const MemberRegisterPages = async (req: Request, res: Response) => {
                 pageTitle: 'Visitor Registration',
                 locationList: locationList,
                 contactList: contactList,
-                username: userByToken?.name
+                username: userByToken?.name + " " +userByToken?.lastname,
             });
         } else {
             res.redirect('/login')
