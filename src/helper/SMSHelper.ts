@@ -3,7 +3,7 @@ import axios from 'axios';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 export const testSentSMS = async (phone: string, qrKey: string): Promise<void> => {
 
-    const message = "เปิดลิงค์ เพื่อเปิด QR Code สำหรับใช้ในการแสกนเข้า Lobby \n" + process.env.HOST_NAME+ '/view/' + qrKey
+    const message = "เปิดลิงค์ เพื่อเปิด QR Code สำหรับการใช้งาน \n" + process.env.HOST_NAME+ '/view/' + qrKey
     console.log(message)
 
     const data = JSON.stringify({

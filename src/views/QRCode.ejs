@@ -61,12 +61,12 @@
 <!-- HTML และ EJS -->
 <div class="container">
     <p>ขอบคุณที่ลงทะเบียนกับทางเรา</p>
-    <p><b>QR CODE</b> นี้ใช้เพื่อออกและชำระค่าที่จอดรถ</p>
+    <p><b>QR CODE</b> นี้ใช้สแกนในส่วนของขาออก</p>
     <% if (approve) { %>
         <img src="/assets/image/ic_qr_success.png" alt="QR Code" class="logo-image">
         <div class="approval-message">
             <span class="check-mark">&#10004;</span>
-            <span class="approve-text">qr โค้ดนี้ได้อนุมัติเรียบร้อย</span>
+            <span class="approve-text">qr code นี้ได้อนุมัติเรียบร้อย</span>
         </div>
         <br>
         <img src="<%= imageUrl %>" alt="QR Code">

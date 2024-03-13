@@ -5,6 +5,7 @@ import {GenqrcodeEntity} from "../entity/GenqrcodeEntity";
 import {Locationtype} from "../entity/Locationtype";
 import {ContactEntity} from "../entity/ContactEntity";
 import {UserEntity} from "../entity/UserEntity";
+import {UserType} from "../entity/UserType";
 
 dotenv.config({path: `.env.${process.env.NODE_ENV}`});
 
@@ -24,7 +25,8 @@ export const AppDataSource = new DataSource(
             GenqrcodeEntity,
             Locationtype,
             ContactEntity,
-            UserEntity
+            UserEntity,
+            UserType
         ],
         migrations: [],
         subscribers: [],
