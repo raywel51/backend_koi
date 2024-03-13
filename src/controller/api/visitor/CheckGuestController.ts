@@ -39,12 +39,12 @@ export const CheckGuestController = async (
     if (!dataQrKey.approve) {
       return res.status(400).json({
         status: false,
-        message: "คิวอาร์โค้่่ดนี้ยังไม่ถูกอนุมัติ",
+        message: "QR Code นี้ยังไม่ถูกอนุมัติ",
       });
     } else {
       return res.status(200).json({
         status: true,
-        message: "คิวอาร์โค้่่ดนี้ได้รับการอนุมัติ",
+        message: "QR Code นี้ได้รับการอนุมัติ",
       });
     }
   } catch (e) {
