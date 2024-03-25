@@ -52,6 +52,7 @@ export const RegisterVisitorController = async (req: Request, res: Response): Pr
             entry_time: visitorData.start_time,
             exit_time: visitorData.final_time,
             channel: "WebVisitor",
+            create_by: ""
         })
 
         await visitorLogRepository.create(visitorLogEntity)

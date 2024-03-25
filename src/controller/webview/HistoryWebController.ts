@@ -13,7 +13,14 @@ export const HistoryWebController = async (req: Request, res: Response): Promise
             const userRepository = UserRepository.getInstance()
             const userByToken = await userRepository.getByToken(token)
 
-            const response = await axios.get(process.env.HOST_NAME+'/api/v1/history')
+            const response = await axios.get(
+                process.env.HOST_NAME + "/api/v1/history",
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
 
             const contactRepository = ContactRepository.getInstance()
             const locationRepository = LocationRepository.getInstance()
@@ -22,7 +29,7 @@ export const HistoryWebController = async (req: Request, res: Response): Promise
 
             console.log(userByToken?.token)
             return res.render('history', {
-                pageTitle: 'LETMEIN: Smart Living and Workplace Platform',
+                pageTitle: 'Visitor Information Form',
                 data: response.data.data,
                 username: userByToken?.name + " " +userByToken?.lastname,
                 locationList: locationList,

@@ -40,7 +40,9 @@ export const UserRegisterController = async (req: Request, res: Response): Promi
             name : name,
             lastname : lastname,
             phone : phone,
-            email : email
+            email : email,
+            token: "",
+            role: "user",
         })
 
         await userRepository.create(userEntity)

@@ -27,4 +27,7 @@ export class UserEntity {
     @Column()
     token!: string
 
+    @Column()
+    role!: string
+
 }

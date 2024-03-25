@@ -52,6 +52,10 @@ export class VisitorLogRepository {
         return await this.repo.findOne({ where: { qrKey: qrKey } });
     }
 
+    async getByUsername(username: string): Promise<VisitorLogEntity[] | null> {
+        return await this.repo.find({ where: { create_by: username } });
+    }
+
     async getByPinCode(pinCode: string): Promise<VisitorLogEntity | null> {
         return await this.repo.findOne({ where: { pinCode: pinCode } });
     }

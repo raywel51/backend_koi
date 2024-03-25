@@ -40,7 +40,7 @@ router.post('/api/users/register', UserRegisterController)
 
 router.get('/api/v1/qrcode/:key', QrCodeController);
 
-router.get('/api/v1/approve/:key', ApproveController);
+router.get('/api/v1/approve/:qrkey', ApproveController);
 
 router.get('/api/v1/history', HistoryQrCodeController);
 router.delete('/api/v1/history/:key', RemoveQrCodeController);
