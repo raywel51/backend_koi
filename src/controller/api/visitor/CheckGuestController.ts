@@ -36,15 +36,29 @@ export const CheckGuestController = async (
       });
     }
 
-    if (!dataQrKey.approve) {
+    let start_time = dataQrKey.entry_time;
+    let exit_time = dataQrKey.exit_time;
+
+    const startTime = new Date(start_time);
+    const exitTime = new Date(exit_time);
+    const currentTime = new Date();
+
+    if (currentTime >= startTime && currentTime <= exitTime) {
+      if (!dataQrKey.approve) {
+        return res.status(400).json({
+          status: false,
+          message: "QR Code นี้ยังไม่ถูกอนุมัติ",
+        });
+      } else {
+        return res.status(200).json({
+          status: true,
+          message: "QR Code นี้ได้รับการอนุมัติ",
+        });
+      }
+    } else {
       return res.status(400).json({
         status: false,
-        message: "QR Code นี้ยังไม่ถูกอนุมัติ",
-      });
-    } else {
-      return res.status(200).json({
-        status: true,
-        message: "QR Code นี้ได้รับการอนุมัติ",
+        message: "QR Code นี้ไม่อยู่ในช่วงขอใช้บริการ",
       });
     }
   } catch (e) {
